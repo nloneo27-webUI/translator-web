@@ -1,18 +1,23 @@
 import streamlit as st
+import os
+
+# 🔥 1. 先设置环境变量 (禁用 Magic，修复 iOS 报错)
+os.environ["STREAMLIT_RUNNER_MAGIC_ENABLED"] = "false"
+
+# 🔥 2. 再引入翻译库
 from deep_translator import GoogleTranslator
 
 # ==========================================
-# 📱 网页版 V19.0 (多语言切换 + 一键复制优化)
+# 📱 网页版 V19.0 (修复版)
 # ==========================================
 
-# 1. 页面配置
+# 3. 页面配置 (这行代码必须是第一个 st. 命令)
 st.set_page_config(
     page_title="AI 随身译",
-    page_icon="🤖",
+    page_icon="icon.png", # 确保你上传了 icon.png
     layout="centered",
     initial_sidebar_state="collapsed"
 )
-
 # 注入 CSS 优化手机端显示 (隐藏多余菜单，放大文字)
 st.markdown("""
     <style>
